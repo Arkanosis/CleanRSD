@@ -1,0 +1,56 @@
+#! /bin/sh
+
+# CleanRSD
+# (C) 2017 Jérémie Roquet <jroquet@arkanosis.net>
+# Released under the MIT license
+# https://github.com/Arkanosis/CleanRSD/
+
+if [ $# -lt 1 ]; then
+  echo 'Usage: cleanrsd <mount_point>' >&2
+  exit 1
+fi
+
+if [ -z "$1" ] || ! [ -d "$1" ] || ! [ -w "$1" ]; then
+  echo "'$1' is not a writable directory" >&2
+  exit 1
+fi
+
+# English
+cat > "$1/IF YOU FIND THIS.TXT" <<EOF
+If you find this removable storage device, please contact its owner:
+
+Jérémie Roquet (Arkanosis)
+
+jroquet@arkanosis.net
+
++33 6 33 07 69 95
+EOF
+
+# French
+cat > "$1/SI VOUS TROUVEZ CECI.TXT" <<EOF
+Si vous trouvez ce périphérique de stockage amovible, merci de contacter son propriétaire :
+
+Jérémie Roquet (Arkanosis)
+
+jroquet@arkanosis.net
+
++33 6 33 07 69 95
+EOF
+
+# Apple file system events daemon
+rm -rf "$1/.fseventsd" && mkdir "$1/.fseventsd" && touch "$1/.fseventsd/no_log"
+
+# Apple Spotlight
+rm -rf "$1/.Spotlight-V100" && touch "$1/.metadata_never_index"
+
+# Apple Mac OS X
+rm -rf "$1/.Trashes" "$1/._.Trashes" && touch "$1/.Trashes" "$1/._.Trashes"
+
+# Apple Finder
+find "$1" -type d \( -name '.DS_Store' -o -name '._.DS_Store' \) -exec echo -- rm -rf {} \;
+
+# Microsoft Windows Explorer
+find "$1" -type f \( -name 'Thumbs.db' -o -name 'desktop.ini' \) -exec rm -f {} \;
+find "$1" -type d \( -name 'System Volume Information' -o -name '$RECYCLE.BIN' \) -exec rm -rf {} \;
+
+echo "Device mounted at '$1' has been set up."
