@@ -1,4 +1,4 @@
-# CleanRSD [![License](http://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
+# CleanRSD [![License](http://img.shields.io/badge/license-ISC-blue.svg)](/LICENSE)
 
 **CleanRSD** setups removable storage devices (RSDs) such as USB flash drives, SD cards and removable hard drives, so that they aren't polluted by self-serving, shameful, indelicate programs. This saves some space, and more importantly speeds up the device (especially if it's a large one) and extends its lifetime.
 
@@ -49,4 +49,4 @@ Please report bugs and feature requests on [GitHub issues](https://github.com/Ar
 
 ## License
 
-CleanRSD is copyright (C) 2017 Jérémie Roquet <jroquet@arkanosis.net> and licensed under the MIT license.
+CleanRSD is copyright (C) 2017 Jérémie Roquet <jroquet@arkanosis.net> and licensed under the ISC license.
