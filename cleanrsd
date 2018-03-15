@@ -1,18 +1,29 @@
 #! /bin/sh
 
 # CleanRSD
-# (C) 2017 Jérémie Roquet <jroquet@arkanosis.net>
+# (C) 2017-2018 Jérémie Roquet <jroquet@arkanosis.net>
 # Released under the ISC license
 # https://github.com/Arkanosis/CleanRSD/
 
-if [ $# -lt 1 ]; then
-  echo 'Usage: cleanrsd <mount_point>' >&2
-  exit 1
+VERSION='v0.1.0-dev'
+
+usage() {
+    echo 'Usage: cleanrsd <mount_point>'
+}
+
+if [ $# -lt 1 ] || [ "x$1" = 'x-h' ] || [ "x$1" = 'x--help' ]; then
+    usage
+    exit
+fi
+
+if [ "x$1" = "x--version" ]; then
+    echo "cleanrsd $VERSION"
+    exit
 fi
 
 if [ -z "$1" ] || ! [ -d "$1" ] || ! [ -w "$1" ]; then
-  echo "'$1' is not a writable directory" >&2
-  exit 1
+    echo "'$1' is not a writable directory" >&2
+    exit 1
 fi
 
 # English

@@ -1,4 +1,4 @@
-# CleanRSD [![License](http://img.shields.io/badge/license-ISC-blue.svg)](/LICENSE)
+# CleanRSD [![Version](https://img.shields.io/badge/version-v0.1.0--dev-orange.svg)](https://semver.org/spec/v2.0.0.html) [![License](http://img.shields.io/badge/license-ISC-blue.svg)](/LICENSE)
 
 **CleanRSD** setups removable storage devices (RSDs) such as USB flash drives, SD cards and removable hard drives, so that they aren't polluted by self-serving, shameful, indelicate programs. This saves some space, and more importantly speeds up the device (especially if it's a large one) and extends its lifetime.
 
